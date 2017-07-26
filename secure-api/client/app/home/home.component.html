@@ -1,0 +1,11 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>{{ 'Greeting' | translate:lang }} {{currentUser.firstName}}!</h1>
+    <p>{{ 'Subtitle' | translate:lang }}!!</p>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}}) - <a *ngIf="currentUser.userRole=='admin'" (click)="deleteUser(user._id)">{{ 'Delete' | translate:lang }}</a> <button *ngIf="currentUser._id==user._id" (click)="apiKey(user)">ApiKey</button>
+        </li>
+    </ul>
+    <p><a [routerLink]="['/login']">{{ 'Logout' | translate:lang }}</a></p>
+</div>
